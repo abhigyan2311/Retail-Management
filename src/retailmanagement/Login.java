@@ -141,7 +141,6 @@ public class Login extends javax.swing.JFrame {
            String uname=rs.getString("EMAILID");
            String password=rs.getString("PASSWORD");
            if ((email.equals(uname)) && (pwd.equals(password))){
-           
               ct=1;
               
               
