@@ -103,22 +103,20 @@ public class Login extends javax.swing.JFrame {
            
            String sql = "Select * from CUSTOMER";
            ResultSet rs = stmt.executeQuery(sql);
-           
+           int ct=0;
            while(rs.next()) {
            String uname=rs.getString("EMAILID");
            String password=rs.getString("PASSWORD");
            if ((email.equals(uname)) && (pwd.equals(password))){
            
               JOptionPane.showMessageDialog(this, "User Logged In");
-           }
-           else
-           {
-                   JOptionPane.showMessageDialog(this, "Incorrect Email/Password", "Error", 0);
-                  
-           }
-           
+              ct=1;
+              
+            }
            } 
-            
+           if(ct==0){
+               JOptionPane.showMessageDialog(this,"Incorrect Email/Password");
+           }
             
         }
         catch(Exception e){
