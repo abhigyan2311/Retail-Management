@@ -196,7 +196,7 @@ public class Signup extends javax.swing.JFrame {
            
            //Show Next Screen
            new Login().setVisible(true);
-           new Signup().setVisible(false);
+           this.dispose();
 
 
        }
