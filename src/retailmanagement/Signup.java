@@ -6,18 +6,13 @@
 package retailmanagement;
 
 import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  *
  * @author abhigyan
  */
-public class Main extends javax.swing.JFrame {
+public class Signup extends javax.swing.JFrame {
     
     public static final String DBURL = "jdbc:oracle:thin:@54.255.163.223:1521:XE";
     public static final String DBUSER = "dbms";
@@ -26,7 +21,7 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-    public Main() {
+    public Signup() {
         initComponents();
     }
 
@@ -184,11 +179,24 @@ public class Main extends javax.swing.JFrame {
            int pin       = Integer.parseInt(tfpin.getText());
            
            //Sending data to DB Server
-           String sql = "Insert into CUSTOMER values('"+(email)+"','"+(city)+"','"+(pin)+"','"+(state)+"','"+(cname)+"','"+(cmobile)+"','"+(cid)+"')";
+           String sql = "Insert into CUSTOMER values('"+(email)+"','"+(city)+"','"+(pin)+"','"+(state)+"','"+(cname)+"','"+(cmobile)+"','"+(cid)+"','"+(pwd)+"')";
            stmt.executeUpdate(sql);
            
            //Success Message
-           JOptionPane.showMessageDialog(this,"Successfully Signed Up");
+           JOptionPane.showMessageDialog(this,"Successfully Signed Up!");
+           
+           //Clear fields
+           tfemail.setText("");
+           tfpwd.setText("");
+           tfcname.setText("");
+           tfmobile.setText("");
+           tfcity.setText("");
+           tfstate.setText("");
+           tfpin.setText("");
+           
+           //Show Next Screen
+           new Login().setVisible(true);
+           new Signup().setVisible(false);
 
 
        }
@@ -218,20 +226,21 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new Signup().setVisible(true);
             }
         });
     }
