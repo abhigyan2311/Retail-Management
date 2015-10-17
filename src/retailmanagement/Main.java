@@ -76,7 +76,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel6.setText("Pincode");
 
-        jButton1.setText("SignUP");
+        jButton1.setText("Sign Up");
         jButton1.setToolTipText("");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,30 +165,35 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tfemailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try{
+       
+        try{
+            
            //Initialize Connection to DB Server
            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
            Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
            Statement stmt = con.createStatement();
            
+           //Getting Values from Textfields
            int cid = 1;
            String email  = tfemail.getText();
            String pwd    = tfpwd.getText();
            String cname  = tfcname.getText();
-           int cmobile    = Integer.parseInt(tfmobile.getText());
+           int cmobile   = Integer.parseInt(tfmobile.getText());
            String city   = tfcity.getText();
            String state  = tfstate.getText();
            int pin       = Integer.parseInt(tfpin.getText());
            
+           //Sending data to DB Server
            String sql = "Insert into CUSTOMER values('"+(email)+"','"+(city)+"','"+(pin)+"','"+(state)+"','"+(cname)+"','"+(cmobile)+"','"+(cid)+"')";
            stmt.executeUpdate(sql);
            
-           JOptionPane.showMessageDialog(this,"Success");
+           //Success Message
+           JOptionPane.showMessageDialog(this,"Successfully Signed Up");
 
 
        }
        catch(Exception e){
-           
+           JOptionPane.showMessageDialog(this, e.getMessage());
        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
