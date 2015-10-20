@@ -40,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -83,7 +84,13 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jPasswordField1);
         jPasswordField1.setBounds(530, 320, 220, 41);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(0, 510, 1080, 10);
+        jSeparator1.setBounds(0, 550, 1080, 10);
+
+        jLabel8.setFont(new java.awt.Font("SF UI Display", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Forgot Password ?");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(480, 510, 146, 23);
 
         jLabel7.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,7 +139,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(480, 550, 150, 50);
+        jLabel6.setBounds(480, 590, 150, 50);
 
         jLabel3.setFont(new java.awt.Font("SF UI Display", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
@@ -272,6 +279,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
