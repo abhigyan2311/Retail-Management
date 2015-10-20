@@ -48,6 +48,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,14 +89,14 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(14, 14, 14))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator1)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 145, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(149, 149, 149))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -137,19 +143,26 @@ public class Login extends javax.swing.JFrame {
            String sql = "Select * from CUSTOMER";
            ResultSet rs = stmt.executeQuery(sql);
            int ct=0;
+           String cname=null;
            while(rs.next()) {
+           cname=rs.getString("cname");
            String uname=rs.getString("EMAILID");
            String password=rs.getString("PASSWORD");
            if ((email.equals(uname)) && (pwd.equals(password))){
               ct=1;
-              
-              
-            }
+              break;
+              }
            } 
            if(ct==0){
                jLabel3.setText("Incorrect Email/Password");
                jTextField1.setText("");
                jPasswordField1.setText("");
+           }
+           else{
+               homepage obj1=new homepage();
+               homepage.jLabel1.setText("Hello "+cname+"!!!");
+               obj1.setVisible(true);
+               this.dispose();
            }
             
         }
@@ -164,6 +177,10 @@ public class Login extends javax.swing.JFrame {
         new Signup().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
