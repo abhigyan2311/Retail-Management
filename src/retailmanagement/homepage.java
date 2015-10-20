@@ -115,7 +115,6 @@ public class homepage extends javax.swing.JFrame {
                  String pName=rs.getString("prodname");
                  String pPrice=rs.getString("price");
                  String pQuantity=rs.getString("quantity");
-                 JOptionPane.showMessageDialog(this, pName);
                  productTable.addRow(new Object[]{pName,pPrice,pQuantity});
                 }
         }catch(Exception e){
