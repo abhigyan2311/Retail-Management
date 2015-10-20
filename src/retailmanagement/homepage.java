@@ -114,7 +114,7 @@ public class homepage extends javax.swing.JFrame {
              while(rs.next()){
                  String pName=rs.getString("prodname");
                  String pPrice=rs.getString("price");
-                 String pQuantity=rs.getString("quantiy");
+                 String pQuantity=rs.getString("quantity");
                  JOptionPane.showMessageDialog(this, pName);
                  productTable.addRow(new Object[]{pName,pPrice,pQuantity});
                 }
@@ -128,26 +128,7 @@ public class homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         DefaultTableModel productTable=(DefaultTableModel) jTable1.getModel();
-         productTable.setRowCount(0);
-         
-         try{
-             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-             Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-             Statement stmt = con.createStatement();
-             
-             String sql = "select * from product";
-             ResultSet rs = stmt.executeQuery(sql);
-             while(rs.next()){
-                 String pName=rs.getString("prodname");
-                 String pPrice=rs.getString("price");
-                 String pQuantity=rs.getString("quantiy");
-                 JOptionPane.showMessageDialog(this, "1");
-                 //productTable.addRow(new Object[]{pName,pPrice,pQuantity});
-                }
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(this, e.getMessage());
-         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
