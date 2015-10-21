@@ -84,18 +84,19 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jPasswordField1);
         jPasswordField1.setBounds(530, 320, 220, 41);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(0, 550, 1080, 10);
+        jSeparator1.setBounds(0, 550, 1080, 12);
 
         jLabel8.setFont(new java.awt.Font("SF UI Display", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Forgot Password ?");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(480, 510, 146, 23);
+        jLabel8.setBounds(470, 500, 170, 30);
 
         jLabel7.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Back");
+        jLabel7.setText("< Back");
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 5));
         getContentPane().add(jLabel7);
         jLabel7.setBounds(10, 10, 130, 50);
@@ -120,7 +121,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(480, 430, 150, 50);
+        jLabel5.setBounds(470, 430, 170, 50);
 
         jLabel6.setBackground(new java.awt.Color(255, 153, 51));
         jLabel6.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
@@ -139,7 +140,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(480, 590, 150, 50);
+        jLabel6.setBounds(470, 610, 170, 50);
 
         jLabel3.setFont(new java.awt.Font("SF UI Display", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
@@ -149,9 +150,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/retailmanagement/assets/abstract-background-4.jpg"))); // NOI18N
-        jLabel4.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jLabel4.setMinimumSize(new java.awt.Dimension(1080, 720));
-        jLabel4.setPreferredSize(new java.awt.Dimension(1080, 720));
         jLabel4.setSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 1080, 720);
