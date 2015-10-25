@@ -17,13 +17,13 @@ import static retailmanagement.Signup.DBUSER;
  * @author Aalekh
  */
 public class homepage extends javax.swing.JFrame {
-
     /**
      * Creates new form homepage
      */
     public homepage() {
         initComponents();
     }
+    
     
 
     /**
@@ -47,6 +47,9 @@ public class homepage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1080, 720));
+        setMinimumSize(new java.awt.Dimension(1080, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -74,6 +77,7 @@ public class homepage extends javax.swing.JFrame {
             }
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.setRowHeight(25);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -88,15 +92,21 @@ public class homepage extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Home");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 40, 110, 44);
+        jLabel3.setBounds(30, 40, 110, 47);
 
         jLabel1.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(540, 40, 332, 38);
+        jLabel1.setBounds(460, 40, 332, 38);
 
         jComboBox1.setFont(new java.awt.Font("SF UI Display", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "My Profile", "My Orders", "Logout" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(910, 40, 160, 50);
 
@@ -113,7 +123,6 @@ public class homepage extends javax.swing.JFrame {
             int row=jTable1.getSelectedRow();
             String pName=(jTable1.getModel().getValueAt(row,0).toString());
             String prodName=null,prodCode=null,prodPrice=null,prodQuantity=null,prodDesc=null;
-            
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
             Statement stmt = con.createStatement();
@@ -126,6 +135,7 @@ public class homepage extends javax.swing.JFrame {
                 prodQuantity=rs.getString("quantity");
                 prodDesc=rs.getString("proddesc");
             }
+            
             Description obj = new Description();
             Description.jLabel1.setText("Product: "+prodName);
             Description.jLabel2.setText("Price: "+prodPrice);
@@ -143,7 +153,6 @@ public class homepage extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        DefaultTableModel productTable=(DefaultTableModel) jTable1.getModel();
          productTable.setRowCount(0);
-         
          try{
              DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
              Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
@@ -162,10 +171,25 @@ public class homepage extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_formWindowOpened
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        switch(jComboBox1.getSelectedIndex()){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                new Login().setVisible(true);
+                this.dispose();
+                break;
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
