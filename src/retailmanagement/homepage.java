@@ -17,10 +17,15 @@ import static retailmanagement.Signup.DBUSER;
  * @author Aalekh
  */
 public class homepage extends javax.swing.JFrame {
+    String uname;
     /**
      * Creates new form homepage
      */
     public homepage() {
+        initComponents();
+    }
+    public homepage(String user){
+        uname = user;
         initComponents();
     }
     
@@ -122,10 +127,14 @@ public class homepage extends javax.swing.JFrame {
         try{
             int row=jTable1.getSelectedRow();
             String pName=(jTable1.getModel().getValueAt(row,0).toString());
-            String prodName=null,prodCode=null,prodPrice=null,prodQuantity=null,prodDesc=null;
+            new Description(uname,pName).setVisible(true);
+            this.dispose();
+            /*String prodName=null,prodCode=null,prodPrice=null,prodQuantity=null,prodDesc=null;
+            
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
             Statement stmt = con.createStatement();
+            
             String sql="select * from product where prodname='"+pName+"'";
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
@@ -136,14 +145,14 @@ public class homepage extends javax.swing.JFrame {
                 prodDesc=rs.getString("proddesc");
             }
             
-            Description obj = new Description();
+            new Description(uname).setVisible(true);
             Description.jLabel1.setText("Product: "+prodName);
             Description.jLabel2.setText("Price: "+prodPrice);
             Description.jLabel3.setText("Description: "+prodDesc);
             Description.jLabel4.setText("Availability: "+prodQuantity+" available");
             Description.jLabel5.setText("Unique product code: "+prodCode);
-            obj.setVisible(true);
-            this.dispose();
+            
+            this.dispose();*/
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -153,6 +162,7 @@ public class homepage extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        DefaultTableModel productTable=(DefaultTableModel) jTable1.getModel();
          productTable.setRowCount(0);
+         jLabel1.setText("Welcome "+uname+" !!!");
          try{
              DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
              Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);

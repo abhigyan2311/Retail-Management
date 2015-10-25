@@ -19,7 +19,7 @@ import static retailmanagement.Signup.DBUSER;
  * @author Aalekh
  */
 public class takeOrder extends javax.swing.JFrame {
-    String uname;
+    String uname,pName;
 
     /**
      * Creates new form takeOrder
@@ -27,8 +27,9 @@ public class takeOrder extends javax.swing.JFrame {
     public takeOrder() {
         initComponents();
     }
-    public takeOrder(String user){
+    public takeOrder(String user,String prodName){
         uname = user;
+        pName = prodName;
         initComponents();
     }
 
@@ -155,10 +156,39 @@ public class takeOrder extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        ResultSet rs;
+        String oEmail=null,prodCode=null,prodPrice=null;
+        try{
+        String oid = "OR-12345";
         String oCity    = jTextField1.getText();
         String oState   = jTextField2.getText();
         String oPincode = jTextField3.getText();
-       
+        
+        DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+        Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+        Statement stmt = con.createStatement();
+        
+        String sql = "select * from  customer where cname ='"+uname+"'";
+        rs = stmt.executeQuery(sql);
+        while(rs.next()){
+            oEmail = rs.getString("emailid");
+        }
+        
+        sql= "select * from product where prodname='"+pName+"'";
+        rs = stmt.executeQuery(sql);
+        while(rs.next()){
+            prodCode=rs.getString("prodcode");
+            prodPrice=rs.getString("price");
+        }
+        
+        sql = "insert into orderdetails values('"+oid+"','"+oEmail+"','"+oCity+"',"+oPincode+",'"+oState+"','"+prodCode+"',"+Integer.parseInt(prodPrice)+")";
+        stmt.executeUpdate(sql);
+        new OrderConfirm().setVisible(true);
+        OrderConfirm().jLabel1.
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+              
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

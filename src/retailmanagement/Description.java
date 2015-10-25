@@ -16,11 +16,17 @@ import static retailmanagement.Signup.DBUSER;
  * @author Aalekh
  */
 public class Description extends javax.swing.JFrame {
+    String uname,pName;
 
     /**
      * Creates new form Description
      */
     public Description() {
+        initComponents();
+    }
+    public Description(String user,String prodName){
+        uname = user;
+        pName= prodName;
         initComponents();
     }
 
@@ -42,6 +48,11 @@ public class Description extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("jLabel1");
 
@@ -54,6 +65,11 @@ public class Description extends javax.swing.JFrame {
         jLabel3.setText("jLabel1");
 
         jButton1.setText("Buy Now");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -101,9 +117,46 @@ public class Description extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new homepage().setVisible(true);
+        new homepage(uname).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new takeOrder(uname,pName).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+       try{
+            String prodName=null,prodCode=null,prodPrice=null,prodQuantity=null,prodDesc=null;
+            
+            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+            Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+            Statement stmt = con.createStatement(); 
+            
+            String sql="select * from product where prodname='"+pName+"'";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                prodName=rs.getString("prodname");
+                prodCode=rs.getString("prodcode");
+                prodPrice=rs.getString("price");
+                prodQuantity=rs.getString("quantity");
+                prodDesc=rs.getString("proddesc");
+            }
+            
+            jLabel1.setText("Product: "+prodName);
+            jLabel2.setText("Price: "+prodPrice);
+            jLabel3.setText("Description: "+prodDesc);
+            jLabel4.setText("Availability: "+prodQuantity+" available");
+            jLabel5.setText("Unique product code: "+prodCode);
+       
+       
+       } catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

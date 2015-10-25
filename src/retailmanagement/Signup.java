@@ -82,19 +82,19 @@ public class Signup extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Email");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 180, 55, 29);
+        jLabel1.setBounds(320, 180, 60, 32);
 
         jLabel2.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(320, 220, 103, 29);
+        jLabel2.setBounds(320, 220, 105, 32);
 
         jLabel3.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mobile");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(320, 300, 70, 29);
+        jLabel3.setBounds(320, 300, 70, 32);
 
         tfmobile.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         getContentPane().add(tfmobile);
@@ -108,23 +108,23 @@ public class Signup extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("City");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(320, 340, 40, 29);
+        jLabel4.setBounds(320, 340, 41, 32);
 
         jLabel5.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("State");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(320, 380, 53, 29);
+        jLabel5.setBounds(320, 380, 56, 32);
 
         jLabel6.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Pincode");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(320, 420, 84, 29);
+        jLabel6.setBounds(320, 420, 87, 32);
 
         tfstate.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         getContentPane().add(tfstate);
-        tfstate.setBounds(600, 370, 230, 41);
+        tfstate.setBounds(600, 370, 230, 38);
 
         tfpin.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         getContentPane().add(tfpin);
@@ -134,7 +134,7 @@ public class Signup extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Name");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(320, 260, 62, 29);
+        jLabel7.setBounds(320, 260, 63, 32);
 
         tfcname.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         tfcname.addActionListener(new java.awt.event.ActionListener() {
@@ -189,9 +189,6 @@ public class Signup extends javax.swing.JFrame {
         jLabel9.setBounds(510, 560, 180, 60);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/retailmanagement/assets/ubuntu_tv_wallpaper.png"))); // NOI18N
-        jLabel8.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jLabel8.setMinimumSize(new java.awt.Dimension(1080, 720));
-        jLabel8.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 0, 1080, 720);
 

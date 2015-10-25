@@ -18,6 +18,8 @@ import static retailmanagement.Signup.DBUSER;
  * @author abhigyan
  */
 public class Login extends javax.swing.JFrame {
+    String cname=null,password=null,uname=null;
+    int phno;
 
     /**
      * Creates new form Login
@@ -52,11 +54,6 @@ public class Login extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
@@ -82,9 +79,9 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(530, 320, 220, 41);
+        jPasswordField1.setBounds(530, 320, 220, 38);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(0, 550, 1080, 12);
+        jSeparator1.setBounds(0, 550, 1080, 2);
 
         jLabel8.setFont(new java.awt.Font("SF UI Display", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,14 +107,14 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.setOpaque(true);
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel5MousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jLabel5MouseReleased(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
             }
         });
         getContentPane().add(jLabel5);
@@ -150,7 +147,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/retailmanagement/assets/abstract-background-4.jpg"))); // NOI18N
-        jLabel4.setSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 1080, 720);
 
@@ -164,10 +160,6 @@ public class Login extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
 
     }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-     
-    }//GEN-LAST:event_formWindowOpened
 
     private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,11 +177,11 @@ public class Login extends javax.swing.JFrame {
            String sql = "Select * from CUSTOMER";
            ResultSet rs = stmt.executeQuery(sql);
            int ct=0;
-           String cname=null;
            while(rs.next()) {
            cname=rs.getString("cname");
-           String uname=rs.getString("EMAILID");
-           String password=rs.getString("PASSWORD");
+           phno=Integer.parseInt(rs.getString("cphno"));
+           uname=rs.getString("EMAILID");
+           password=rs.getString("PASSWORD");
            if ((email.equals(uname)) && (pwd.equals(password))){
               ct=1;
               break;
@@ -202,9 +194,7 @@ public class Login extends javax.swing.JFrame {
            }
            else{
                jLabel3.setVisible(false);
-               homepage obj1=new homepage();
-               homepage.jLabel1.setText("Hello "+cname+"!!!");
-               obj1.setVisible(true);
+               new homepage(cname).setVisible(true);
                this.dispose();
            }
             
@@ -268,7 +258,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
