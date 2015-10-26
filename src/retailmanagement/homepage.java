@@ -17,7 +17,7 @@ import static retailmanagement.Signup.DBUSER;
  * @author Aalekh
  */
 public class homepage extends javax.swing.JFrame {
-    String uname;
+    String uname; String emailID;
     /**
      * Creates new form homepage
      */
@@ -97,16 +97,15 @@ public class homepage extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Home");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 40, 110, 47);
+        jLabel3.setBounds(90, 40, 110, 44);
 
         jLabel1.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(460, 40, 332, 38);
+        jLabel1.setBounds(560, 40, 332, 38);
 
         jComboBox1.setFont(new java.awt.Font("SF UI Display", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "My Profile", "My Orders", "Logout" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Options", "My Profile", "My Orders", "Logout" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -129,30 +128,6 @@ public class homepage extends javax.swing.JFrame {
             String pName=(jTable1.getModel().getValueAt(row,0).toString());
             new Description(uname,pName).setVisible(true);
             this.dispose();
-            /*String prodName=null,prodCode=null,prodPrice=null,prodQuantity=null,prodDesc=null;
-            
-            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-            Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-            Statement stmt = con.createStatement();
-            
-            String sql="select * from product where prodname='"+pName+"'";
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                prodName=rs.getString("prodname");
-                prodCode=rs.getString("prodcode");
-                prodPrice=rs.getString("price");
-                prodQuantity=rs.getString("quantity");
-                prodDesc=rs.getString("proddesc");
-            }
-            
-            new Description(uname).setVisible(true);
-            Description.jLabel1.setText("Product: "+prodName);
-            Description.jLabel2.setText("Price: "+prodPrice);
-            Description.jLabel3.setText("Description: "+prodDesc);
-            Description.jLabel4.setText("Availability: "+prodQuantity+" available");
-            Description.jLabel5.setText("Unique product code: "+prodCode);
-            
-            this.dispose();*/
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -187,8 +162,14 @@ public class homepage extends javax.swing.JFrame {
             case 0:
                 break;
             case 1:
+                new Profile(uname).setVisible(true);
+                this.dispose();
                 break;
             case 2:
+                new myOrders().setVisible(true);
+                this.dispose();
+                break;
+            case 3:
                 new Login().setVisible(true);
                 this.dispose();
                 break;
