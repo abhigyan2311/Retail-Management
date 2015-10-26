@@ -79,9 +79,9 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(530, 320, 220, 38);
+        jPasswordField1.setBounds(530, 320, 220, 41);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(0, 550, 1080, 2);
+        jSeparator1.setBounds(0, 550, 1080, 12);
 
         jLabel8.setFont(new java.awt.Font("SF UI Display", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,14 +107,14 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.setOpaque(true);
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel5MousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jLabel5MouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
             }
         });
         getContentPane().add(jLabel5);
