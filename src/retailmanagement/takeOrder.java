@@ -6,6 +6,7 @@
 package retailmanagement;
 
 import java.sql.Connection;
+import java.util.Random;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -157,9 +158,9 @@ public class takeOrder extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ResultSet rs;
-        String oEmail=null,prodCode=null,prodPrice=null;
+        String oEmail=null,prodCode=null,prodPrice=null,oid=null;
+        int chckflag=-1;
         try{
-        String oid = "OR-12345";
         String oCity    = jTextField1.getText();
         String oState   = jTextField2.getText();
         String oPincode = jTextField3.getText();
@@ -167,6 +168,22 @@ public class takeOrder extends javax.swing.JFrame {
         DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
         Connection con = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
         Statement stmt = con.createStatement();
+        
+        do{
+        chckflag=-1;    
+        Random randobj = new Random();
+        int order = 10000+randobj.nextInt(10000);
+        oid = "OR-"+order;
+        String chcksql="select * from orderdetails";
+        rs = stmt.executeQuery(chcksql);
+        while(rs.next()){
+            if(oid == rs.getString("orderid")){
+                chckflag = 1;
+                break;
+            }
+        }
+        }while(chckflag==1);
+        
         
         String sql = "select * from  customer where cname ='"+uname+"'";
         rs = stmt.executeQuery(sql);
@@ -183,8 +200,9 @@ public class takeOrder extends javax.swing.JFrame {
         
         sql = "insert into orderdetails values('"+oid+"','"+oEmail+"','"+oCity+"',"+oPincode+",'"+oState+"','"+prodCode+"',"+Integer.parseInt(prodPrice)+")";
         stmt.executeUpdate(sql);
-        new OrderConfirm().setVisible(true);
-        OrderConfirm().jLabel1.
+        new OrderConfirm(uname).setVisible(true);
+        OrderConfirm.jLabel1.setText("Your Order has been confirmed with order number "+oid);
+        this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -193,7 +211,8 @@ public class takeOrder extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new Description().setVisible(true);
+        new Description(uname,pName).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
