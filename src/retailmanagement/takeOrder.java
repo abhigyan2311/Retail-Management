@@ -94,7 +94,7 @@ public class takeOrder extends javax.swing.JFrame {
 
         jTextField2.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(440, 270, 230, 41);
+        jTextField2.setBounds(440, 270, 230, 38);
 
         jTextField3.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class takeOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
         ResultSet rs;
         String oEmail=null,prodCode=null,prodPrice=null,oid=null;
-        int chckflag=-1;
+        int chckflag=-1,prodQty=0;
         try{
         String oCity    = jTextField1.getText();
         String oState   = jTextField2.getText();
@@ -181,9 +181,13 @@ public class takeOrder extends javax.swing.JFrame {
         while(rs.next()){
             prodCode=rs.getString("prodcode");
             prodPrice=rs.getString("price");
+            prodQty=Integer.parseInt(rs.getString("quantity"));
         }
         
+        prodQty=prodQty-1;
         sql = "insert into orderdetails values('"+oid+"','"+oEmail+"','"+oCity+"',"+oPincode+",'"+oState+"','"+prodCode+"',"+Integer.parseInt(prodPrice)+")";
+        stmt.executeUpdate(sql);
+        sql="update product set quantity="+(prodQty)+" where prodname='"+pName+"'";
         stmt.executeUpdate(sql);
         new OrderConfirm(uname).setVisible(true);
         OrderConfirm.jLabel1.setText("Your Order has been confirmed with order number "+oid);

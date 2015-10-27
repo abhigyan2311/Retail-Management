@@ -73,13 +73,13 @@ public class Profile extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(320, 250, 100, 29);
+        jLabel2.setBounds(320, 250, 100, 32);
 
         jLabel3.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Email ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(320, 290, 100, 29);
+        jLabel3.setBounds(320, 290, 100, 32);
 
         jLabel4.setFont(new java.awt.Font("SF UI Display", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,7 +157,7 @@ public class Profile extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(20, 20, 98, 60);
+        jButton2.setBounds(20, 20, 89, 60);
 
         jLabel9.setFont(new java.awt.Font("SF UI Display", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,9 +166,6 @@ public class Profile extends javax.swing.JFrame {
         jLabel9.setBounds(460, 70, 110, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/retailmanagement/assets/Abstract Wallpapers 21.jpg"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1080, 720));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-5, -4, 1090, 730);
 
