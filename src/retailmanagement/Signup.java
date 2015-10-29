@@ -220,6 +220,10 @@ public class Signup extends javax.swing.JFrame {
                jLabel11.setText("Please enter all the information");
                jLabel11.setVisible(true);
            }
+           else if (pwd.length()<=6){
+               jLabel11.setText("Please enter a password with 6 characters or more.");
+               
+           }
            else if ( email.contains("@") == false || email.contains(".") == false){
                jLabel11.setText("Please enter a valid Email");
                jLabel11.setVisible(true);
@@ -237,7 +241,7 @@ public class Signup extends javax.swing.JFrame {
                try{
                    
                   int pin       = Integer.parseInt(spin);
-                  int cmobile   = Integer.parseInt(smobile);
+               
             
                   //Initialize Connection to DB Server
                   DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
@@ -247,7 +251,7 @@ public class Signup extends javax.swing.JFrame {
                   int cid = 1;
                  
                   //Sending data to DB Server
-                  String sql = "Insert into CUSTOMER values('"+(email)+"','"+(city)+"',"+(pin)+",'"+(state)+"','"+(cname)+"',"+(cmobile)+","+(cid)+",'"+(pwd)+"')";
+                  String sql = "Insert into CUSTOMER values('"+(email)+"','"+(city)+"',"+(pin)+",'"+(state)+"','"+(cname)+"',"+(smobile)+","+(cid)+",'"+(pwd)+"')";
                   stmt.executeUpdate(sql);
            
                   //Success Message

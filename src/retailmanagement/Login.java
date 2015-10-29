@@ -19,7 +19,7 @@ import static retailmanagement.Signup.DBUSER;
  */
 public class Login extends javax.swing.JFrame {
     String cname=null,password=null,uname=null;
-    int phno;
+    String phno=null;
 
     /**
      * Creates new form Login
@@ -179,7 +179,7 @@ public class Login extends javax.swing.JFrame {
            int ct=0;
            while(rs.next()) {
            cname=rs.getString("cname");
-           phno=Integer.parseInt(rs.getString("cphno"));
+           phno=rs.getString("cphno");
            uname=rs.getString("EMAILID");
            password=rs.getString("PASSWORD");
            if ((email.equals(uname)) && (pwd.equals(password))){
